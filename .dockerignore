@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.bmp
+*.tiff
+venv/
+.idea/
+.DS_Store
+*.log
+*.md

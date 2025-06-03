@@ -1,0 +1,36 @@
+[cerebrium]
+project = "mtailor_onnx_classifier"
+model_type = "onnx"
+
+[cerebrium.deployment]
+name = "mtailor-onnx-deployment"
+python_version = "3.11"
+docker_base_image_url = "debian:bookworm-slim"
+include = [
+    "main.py",
+    "model.onnx",
+    "model.py",
+    "pytorch_model.py",
+    "requirements.txt",
+    "cerebrium.toml"
+]
+exclude = ["venv", "__pycache__", "*.JPEG", "*.jpeg", "*.jpg", "*.png"]
+
+[cerebrium.hardware]
+cpu = 2
+memory = 4.0
+compute = "CPU"
+provider = "aws"
+region = "us-east-1"
+
+[cerebrium.dependencies.pip]
+onnxruntime = "latest"
+numpy = "latest"
+Pillow = "latest"
+torch = "latest"
+torchvision = "latest"
+
+[cerebrium.input_schema]
+[cerebrium.input_schema.input]
+shape = [1, 3, 224, 224]
+dtype = "float32"
